@@ -1,5 +1,3 @@
-# jdicdican.github.io
-
 This is an official portfolio of **Joseph Dicdican**.
 
 ```js
