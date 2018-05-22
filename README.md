@@ -1,4 +1,4 @@
-# [$joseph.Dicdican()](https://josephdicdican.github.io)
+# jdicdican.github.io
 
 This is an official portfolio of **Joseph Dicdican**.
 
