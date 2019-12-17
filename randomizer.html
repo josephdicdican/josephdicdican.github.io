@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Randomizer</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+
+  <main role="main" class="container">
+
+    <div class="starter-template">
+	    <h1>Randomizer</h1>
+	    <p class="lead">Lets get randomizing.</p>
+
+
+	    <div class="row">
+		    <div class="col-md-12">
+		    	<label class="control-label">Type Entries (multi-line)</label>
+		    	<textarea id="entries" class="form-control" rows="6"></textarea>
+		    	<div class="mt-5">
+		    		<button id="btn-refresh" class="btn btn-dark">Refresh</button>
+			    	<button id="btn-randomize" class="btn btn-dark">Go</button>
+			    	<span id="loader" class="ml-5">Randomizing ...</span>
+			    	<span id="winner-note" class="ml-5 p-2 bg-dark text-white">And the winner is <span id="winner"></span></span>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  	$(function() {
+  		var entries = $('#entries'),
+  			btn_random = $('#btn-randomize'),
+  			loader = $('#loader'),
+  			winner_note = $('#winner-note'),
+  			winner = $('#winner'),
+  			btn_refresh = $('#btn-refresh');
+
+			loader.hide();
+			clean_winner();
+
+			btn_random.on('click', function() {
+				var rows = entries.val().split('\n');
+				var random_num = Math.ceil(Math.random()*rows.length);
+
+				loader.show();
+				clean_winner();
+				setTimeout(function() {
+					loader.hide();
+					winner.html(rows[random_num-1]);
+					winner_note.show();
+				}, 3000);
+			});
+
+			btn_refresh.on('click', function() {
+				window.location.href = window.location.href;
+			});
+
+			function clean_winner() {
+				winner_note.hide();
+				winner.html('');
+			}
+  	});
+  </script>
+</body>
+</html>
